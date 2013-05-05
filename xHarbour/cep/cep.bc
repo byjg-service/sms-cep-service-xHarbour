@@ -1,0 +1,74 @@
+#BCC
+VERSION=BCB.01
+!ifndef CC_DIR
+CC_DIR = $(MAKE_DIR)
+!endif
+
+!ifndef HB_DIR
+HB_DIR = $(HARBOUR_DIR)
+!endif
+ 
+RECURSE= NO 
+ 
+SHELL = 
+COMPRESS = NO
+EXTERNALLIB = NO
+XFWH = NO
+FILESTOADD =  5
+WARNINGLEVEL =  0
+USERDEFINE = 
+USERINCLUDE = 
+USERLIBS = 
+EDITOR = edit
+GUI = NO
+MT = NO
+PROJECT = cep.exe $(PR) 
+OBJFILES = CEP.obj $(OB) 
+PRGFILES = CEP.PRG $(PS) 
+OBJCFILES = $(OBC) 
+CFILES = $(CF)
+RESFILES = 
+RESDEPEN = 
+TOPMODULE = CEP.PRG
+LIBFILES = lang.lib vm.lib rtl.lib rdd.lib macro.lib pp.lib dbfntx.lib dbfcdx.lib dbffpt.lib common.lib gtwin.lib codepage.lib ct.lib tip.lib pcrepos.lib hsx.lib hbsix.lib
+EXTLIBFILES =
+DEFFILE = 
+HARBOURFLAGS =  -w0
+CFLAG1 =  -OS $(SHELL)  $(CFLAGS) -d -c -L$(HB_DIR)\lib 
+CFLAG2 =  -I$(HB_DIR)\include;$(CC_DIR)\include
+RFLAGS = 
+LFLAGS = -L$(CC_DIR)\lib\obj;$(CC_DIR)\lib;$(HB_DIR)\lib -Gn -M -m -s -Tpe -x -ap
+IFLAGS = 
+LINKER = ilink32
+ 
+ALLOBJ = c0x32.obj $(OBJFILES) $(OBJCFILES)
+ALLRES = $(RESDEPEN)
+ALLLIB = $(USERLIBS) $(LIBFILES) import32.lib cw32.lib
+.autodepend
+ 
+#DEPENDS
+ 
+#COMMANDS
+.cpp.obj:
+$(CC_DIR)\BIN\bcc32 $(CFLAG1) $(CFLAG2) -o$* $**
+ 
+.c.obj:
+$(CC_DIR)\BIN\bcc32 -I$(HB_DIR)\include $(CFLAG1) $(CFLAG2) -o$* $**
+ 
+.prg.obj:
+$(HB_DIR)\bin\harbour -D__EXPORT__ -n -go -I$(HB_DIR)\include $(HARBOURFLAGS) -o$* $**
+ 
+.rc.res:
+$(CC_DIR)\BIN\brcc32 $(RFLAGS) $<
+ 
+#BUILD
+ 
+$(PROJECT): $(CFILES) $(OBJFILES) $(RESDEPEN) $(DEFFILE)
+    $(CC_DIR)\BIN\$(LINKER) @&&!  
+    $(LFLAGS) +
+    $(ALLOBJ), +
+    $(PROJECT),, +
+    $(ALLLIB), +
+    $(DEFFILE), +
+    $(ALLRES) 
+!

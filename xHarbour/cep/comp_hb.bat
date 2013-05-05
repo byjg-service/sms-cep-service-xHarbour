@@ -1,0 +1,1 @@
+hbmk2 -inc -st -trace -ocep cep.prg

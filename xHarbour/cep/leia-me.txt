@@ -1,0 +1,13 @@
+Para que o exemplo funcione você tem que criar um usuario no seguinte SITE: http://www.byjg.com.br/site/
+
+Depois de ter cadastrado e ATIVADO sua conta no Site do Webservice, você apenas altera no exemplo
+em anexo o usuario e senha que você cadastrou que vai funcionar.
+O exemplo abaixo foi compilado com xharbour 1.0.0 + bcc551 e sem lib visual alguma,
+apenas tem que ter linkado no exemplo a TIP.LIB por causa da função: Inetestaconectada() essa função verefica a conexão com a internet esta ativa.
+
+Tentei compilar o mesmo exemplo com Harbour atual do SVN(16/06/2008),
+mas não obtive exito, mas quem sabe com a versão beta 2.0 ou com versões anteriores de certo,
+eu vi que no SVN recentemente estão mexendo com o CreateObject() ,
+talvez por isso não deu certo, mas deve ser apenas uma questão de ajuste de parametros ou mudar o nome da função que deve funcionar.
+
+Com a versão 1.0.1 do Harbour + bcc551 está compilando e rodando corretamente.
