@@ -4,6 +4,8 @@
 // alexandre.oliveira@awsinformatica.com.br
 //------------------------------------------------------------------------------
 
+// Habilitar os packages: hbtipssl.lib e hbtip.lib.
+
 FUNCTION EnviaSMS()
    LOCAL oUrl
    LOCAL oPagina
